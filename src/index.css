@@ -1,0 +1,13 @@
+.stylee{
+  background-color: green;
+  color: black;
+}
+
+.butn{
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-family: monospace;
+}
