@@ -1,62 +1,36 @@
-import { useState } from "react";
-import Button from "./components/Button";
-import Header from "./components/Header";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NavBar from "./components/NavBar";
-import DIsplayStudent from "./components/DIsplayStudent";
-import AddStudent from "./components/AddStudent";
+import NotFound from "./pages/NotFound";
+import Layout from "./pages/Layout";
+import User from "./pages/User";
+import Effect from "./pages/Effect";
+import Fetch from "./pages/Fetch";
+import Formikk from "./pages/Formikk";
 
 function App() {
-  //React Hooks
-
-  // const[initialState, funtionToChangeTheState]= useState(initialValue)
-  
-  const [allStudents, setallStudents] = useState([]);
-
-  // const checkSom=(e)=>{
-  //   console.log(e.target.value)
-
-  //   setfirstName(e.target.value)
-
-  // }
-
-  const saveStudent = (student) => {
-    // let student = {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    //   profileImage,
-    // };
-
-    // allStudents.push(student)
-
-    setallStudents([...allStudents, student]);
-    console.log(allStudents);
-
-    // let fruits = ['mango', 'apple', 'orange']
-    // let newFruits = [...fruits, 'banana']
-    // console.log(newFruits)
-  };
-
-  const deleteStudent=(index)=>{
-    let newAllStudents = [...allStudents]
-    newAllStudents.splice(index, 1)
-
-    setallStudents(newAllStudents)
-  }
-
-  const editStudent=(index, newStudent)=>{
-    let newAllStudents = [...allStudents]
-    newAllStudents.splice(index, 1, newStudent)
-
-    setallStudents(newAllStudents)
-  }
-
   return (
     <>
-      <AddStudent saveStudent={saveStudent}/>
+      {/* <NavBar /> */}
+      <Routes>
+        <Route  element={<Layout/>}>
+          <Route index path="/" element={<Home />}/>
 
-      <DIsplayStudent allStudents={allStudents} deleteStudent={deleteStudent} editStudent={editStudent}/>
+          <Route path="/about" element={<About />} />
+        </Route>
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/sp-contact" element={<Navigate to={"/contact"} />} />
+
+        <Route path="/user/:username/:id" element={<User/>}/>
+        <Route path="/effect" element={<Effect/>}/>
+        <Route path="/formik" element={<Formikk/>}/>
+        <Route path="/fetch" element={<Fetch/>}/>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
