@@ -11,6 +11,13 @@ const Effect = () => {
    useEffect(()=>{
     console.log('use effect ran')
    },[number])
+
+//    useEffect(() => {
+ 
+   
+   
+//    }, [])
+   
     
     
   return (

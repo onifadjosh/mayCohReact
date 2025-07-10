@@ -7,6 +7,11 @@ const DIsplayStudent = ({ allStudents, deleteStudent, editStudent }) => {
   const [profileImage, setprofileImage] = useState("");
   const [password, setpassword] = useState("");
   const [currentIndex, setcurrentIndex] = useState(0);
+
+  const handleSave=(students)=>{
+    let newStudents = [...allStudents]
+    setfirstName([students,newStudents])
+  }
   return (
     <div>
       <h1>All Students</h1>

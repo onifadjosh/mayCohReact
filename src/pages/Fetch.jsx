@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "../components/Card";
 
 const Fetch = () => {
   const [allProducts, setallProducts] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+  const [filteredProducts, setfilteredProducts] = useState([])
   //   const makeRequest = async () => {
   //     let url = "https://fakestoreapi.com/products";
   //     let response = await fetch(url);
@@ -22,26 +24,48 @@ const Fetch = () => {
     console.log(response.data);
     setisLoading(false);
     setallProducts(response.data);
-
-    // const credentials = { username: "john_doe", password: "pass123" };
-    // axios
-    //   .post("https://fakestoreapi.com/auth/login", credentials)
-    //   .then((response) => console.log(response.data));
+    filterJwe(response.data)
   };
 
   useEffect(() => {
     makeRequest();
+
   }, []);
+
+
+
+  const filterJwe=(products)=>{
+   let jewelery= products.filter((product)=>(
+      // console.log(product)
+     product.category === 'jewelery'
+    ))
+
+    setfilteredProducts(jewelery)
+
+    //filter products according to category
+    
+
+  }
+
+  const deleteProduct=(product)=>{
+    let newProduct = [...filteredProducts]
+    newProduct.splice(product, 1)
+    console.log(newProduct)
+    setfilteredProducts(newProduct)
+    // console.log(product)
+  }
   return (
-    <div>
+    <div className="d-flex flex-wrap gap-3">
       {isLoading ? (
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        allProducts.map((product, index) => (
-          <div key={index}>
-            <h1>{product.title}</h1>
+        filteredProducts.map((product, index) => (
+          <div key={index} >
+            {/* <h1>{product.title}</h1> */}
+
+            <Card product={product} deleteProduct={deleteProduct} index={index}/>
           </div>
         ))
       )}
