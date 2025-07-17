@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
       <div className="login-card">
         <div className="login-header">
           <h2>Welcome Back</h2>
-          <p>Please enter your credentials to login</p>
+          <p>Please enter your credentials to lon</p>
         </div>
 
         <div    className="login-form">
@@ -85,7 +85,7 @@ const Login = () => {
 
         <div className="login-footer">
           <p>
-            Don't have an account? <a href="#signup">Sign up</a>
+            Don't have an account? <Link to={'/formik'}>signup</Link>
           </p>
         </div>
       </div>
