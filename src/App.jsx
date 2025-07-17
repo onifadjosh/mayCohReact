@@ -12,7 +12,7 @@ import Formikk from "./pages/Formikk";
 import Upload from "./pages/Upload";
 import AllStudents from "./pages/AllStudents";
 import Login from "./pages/Login";
-import Transfer from "./pages/transfer";
+import Transfer from "./pages/Transfer";
 import Authguard from "./Auth/Authguard";
 
 function App() {
